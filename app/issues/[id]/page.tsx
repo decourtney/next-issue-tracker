@@ -1,9 +1,8 @@
 import prisma from "@/prisma/client";
-import Link from 'next/link'
-import { Card, Flex, Heading, Text, Grid, Box, Button } from "@radix-ui/themes";
+import { Box, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import EditIssueButton from "./EditIssueButton"
-import IssueDetails from "./IssueDetails"
+import EditIssueButton from "./EditIssueButton";
+import IssueDetails from "./IssueDetails";
 
 interface Props {
   params: { id: string };
