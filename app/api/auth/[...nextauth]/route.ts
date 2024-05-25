@@ -1,4 +1,4 @@
-import { handlers } from "@/app/auth";
+import { handlers } from "@/auth";
 
 export const { GET, POST } = handlers;
-export { auth as middleware } from "@/app/auth";
+export { auth as middleware } from "@/auth";
