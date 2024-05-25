@@ -1,38 +1,38 @@
-"use client";
-
-import classNames from "classnames";
+import { auth } from "@/auth";
+import { Box, Container, Flex } from "@radix-ui/themes";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FaBug } from "react-icons/fa";
+import NavBarLink from "./components/NavBarLink";
+import { SignIn, SignOut } from "./components/LogButtons";
 
-const NavBar = () => {
-  const currentPath = usePathname();
+const NavBar = async () => {
+  const session = await auth();
 
   const links = [
     { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues/list" },
   ];
-  
+
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
-      <Link href="/">
-        <FaBug />
-      </Link>
-      <ul className="flex space-x-6">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            className={classNames({
-              "text-zinc-900": link.href === currentPath,
-              "text-zinc-500": link.href !== currentPath,
-              "hover:text-zinc-900 transition-colors": true,
-            })}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </ul>
+    <nav className="border-b mb-5 px-5 py-3">
+      <Container>
+        <Flex justify={"between"}>
+          <Flex align={"center"} gap={"3"}>
+            <Link href="/">
+              <FaBug />
+            </Link>
+            <ul className="flex space-x-6">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <NavBarLink link={link} />
+                </li>
+              ))}
+            </ul>
+          </Flex>
+
+          <Box>{session ? <SignOut /> : <SignIn />}</Box>
+        </Flex>
+      </Container>
     </nav>
   );
 };
