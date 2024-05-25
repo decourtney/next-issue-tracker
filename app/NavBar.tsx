@@ -1,36 +1,21 @@
-import { auth } from "@/auth";
-import { Box, Container, Flex } from "@radix-ui/themes";
+import { Container, Flex } from "@radix-ui/themes";
 import Link from "next/link";
 import { FaBug } from "react-icons/fa";
-import NavBarLink from "./components/NavBarLink";
-import { SignIn, SignOut } from "./components/LogButtons";
+import AuthStatus from "./components/AuthStatus";
+import NavLinks from "./components/NavLinks";
 
-const NavBar = async () => {
-  const session = await auth();
-
-  const links = [
-    { label: "Dashboard", href: "/" },
-    { label: "Issues", href: "/issues/list" },
-  ];
-
+const NavBar = () => {
   return (
     <nav className="border-b mb-5 px-5 py-3">
       <Container>
         <Flex justify={"between"}>
           <Flex align={"center"} gap={"3"}>
-            <Link href="/">
+            <Link href={"/"}>
               <FaBug />
             </Link>
-            <ul className="flex space-x-6">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <NavBarLink link={link} />
-                </li>
-              ))}
-            </ul>
+            <NavLinks />
           </Flex>
-
-          <Box>{session ? <SignOut /> : <SignIn />}</Box>
+          <AuthStatus />
         </Flex>
       </Container>
     </nav>
