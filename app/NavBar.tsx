@@ -2,6 +2,7 @@
 import {
   Avatar,
   Box,
+  Button,
   Container,
   DropdownMenu,
   Flex,
@@ -67,7 +68,9 @@ const SignIn = () => {
         await signIn();
       }}
     >
-      <button type="submit">Sign in</button>
+      <Button size={"1"} type="submit">
+        Sign in
+      </Button>
     </form>
   );
 };
@@ -80,7 +83,9 @@ const SignOut = () => {
         await signOut({ redirectTo: "/", redirect: true });
       }}
     >
-      <button type="submit">Sign Out</button>
+      <Button size={"1"} type="submit">
+        Sign Out
+      </Button>
     </form>
   );
 };
