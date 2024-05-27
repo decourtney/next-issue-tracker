@@ -1,7 +1,7 @@
 import { issueSchema } from "@/app/validationSchemas";
-import prisma from "@/prisma/client";
-import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
+import prisma from "@/prisma/client";
+import { NextResponse } from "next/server";
 
 export const PATCH = auth(async function PATCH(req, ctx) {
   if (!req.auth)
@@ -37,7 +37,7 @@ export const DELETE = auth(async function DELETE(req, ctx) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const params = ctx.params as { id: string };
-  
+
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },
   });
