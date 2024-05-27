@@ -1,15 +1,18 @@
-import { auth } from "@/auth";
-import { Avatar, Box, DropdownMenu, Text } from "@radix-ui/themes";
+import { auth, signOut } from "@/auth";
+import { Avatar, Box, Button, DropdownMenu, Text } from "@radix-ui/themes";
 import Link from "next/link";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 
 const AuthStatus = async () => {
   const session = await auth();
 
   if (!session)
     return (
-      <Link className="nav-link" href={"/api/auth/signin"}>
-        Login
-      </Link>
+      // <Link className="nav-link" href={"/api/auth/signin"}>
+      //   Login
+      // </Link>
+      <SignIn />
     );
 
   return (
@@ -29,11 +32,9 @@ const AuthStatus = async () => {
             <Text size={"2"}>{session.user!.email}</Text>
           </DropdownMenu.Label>
           <DropdownMenu.Separator />
-          <DropdownMenu.Item>
-            <Text>
-              <Link href={"/api/auth/signout"}>Logout</Link>
-            </Text>
-          </DropdownMenu.Item>
+          {/* <DropdownMenu.Item> */}
+          <SignOut />
+          {/* </DropdownMenu.Item> */}
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </Box>
