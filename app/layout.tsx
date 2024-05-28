@@ -1,10 +1,11 @@
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./NavBar";
 import "./theme-config.css";
+import QueryClientProvider from "./QueryClientProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,11 +26,15 @@ export default function RootLayout({
     <html lang="en">
       {/* still shows font-family as -apple-system */}
       <body className={inter.variable}>
-        <Theme radius="large">
-          <NavBar />
-          <main className="p-5">{children}</main>
-          {/* <ThemePanel /> */}
-        </Theme>
+        <QueryClientProvider>
+          <Theme radius="large">
+            <NavBar />
+            <main className="p-5">
+              <Container>{children}</Container>
+            </main>
+            {/* <ThemePanel /> */}
+          </Theme>
+        </QueryClientProvider>
       </body>
     </html>
   );
