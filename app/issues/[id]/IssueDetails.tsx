@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import AssigneeSelect from "./AssigneeSelect";
 
 const IssueDetails = ({ issue }: { issue: Issue }) => {
+
   return (
     <>
       <Heading>{issue.title}</Heading>
@@ -15,8 +16,6 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
           <IssueStatusBadge status={issue.status} />
           <Text>{issue.createdAt.toDateString()}</Text>
         </Flex>
-        
-        <AssigneeSelect />
       </Flex>
       <Card className="prose max-w-full" mt="4">
         <ReactMarkdown>{issue.description}</ReactMarkdown>
