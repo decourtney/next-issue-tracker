@@ -53,7 +53,11 @@ const AuthStatus = async () => {
             <Text size={"2"}>{session.user!.email}</Text>
           </DropdownMenu.Label>
           <DropdownMenu.Separator />
-          <SignOut />
+          <Flex justify={"end"}>
+            <DropdownMenu.Item disabled={true}>
+              <SignOut />
+            </DropdownMenu.Item>
+          </Flex>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </Box>
