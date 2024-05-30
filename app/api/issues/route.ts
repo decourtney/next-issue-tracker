@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 
 export const POST = auth(async function POST(req) {
+  if (!req.auth)
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const body = await req.json();
   const validation = issueSchema.safeParse(body);
 
