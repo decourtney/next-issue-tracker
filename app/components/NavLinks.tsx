@@ -16,7 +16,7 @@ const NavLinks = () => {
       {links.map((link) => (
         <li key={link.href}>
           <Link
-            className={`${link.href === currentPath ? "text-zinc-900" : "nav-link"}`}
+            // className={`${link.href === currentPath ? "text-zinc-100" : "nav-link"}`}
             href={link.href}
           >
             {link.label}

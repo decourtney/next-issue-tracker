@@ -6,6 +6,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import "./theme-config.css";
 import QueryClientProvider from "./QueryClientProvider";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,13 +28,14 @@ export default function RootLayout({
       {/* still shows font-family as -apple-system */}
       <body className={inter.variable}>
         <QueryClientProvider>
-          <Theme radius="large">
-            <NavBar />
-            <main className="p-5">
-              <Container>{children}</Container>
-            </main>
-            {/* <ThemePanel /> */}
-          </Theme>
+          <ThemeProvider attribute="class">
+            <Theme radius="large">
+              <NavBar />
+              <main className="p-5">
+                <Container>{children}</Container>
+              </main>
+            </Theme>
+          </ThemeProvider>
         </QueryClientProvider>
       </body>
     </html>
