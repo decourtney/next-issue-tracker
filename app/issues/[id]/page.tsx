@@ -34,7 +34,7 @@ const IssueDetailPage = async ({ params }: Props) => {
             justify={"end"}
             align={"stretch"}
           >
-            <AssigneeSelect />
+            <AssigneeSelect issue={issue}/>
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
           </Flex>
