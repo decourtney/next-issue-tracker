@@ -39,3 +39,6 @@ next-env.d.ts
 
 # Cloud9
 .c9
+
+# Git Filter Repo
+/git-filter-repo
