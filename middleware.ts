@@ -8,5 +8,6 @@ export default auth((req) => {
 });
 
 export const config = {
+  // matcher:["/((?!).*)"] // for development
   matcher: ["/issues/new", "/issues/edit/:id+"],
 };
