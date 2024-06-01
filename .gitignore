@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Git Filter Repo
 /git-filter-repo
+# Sentry Config File
+.env.sentry-build-plugin
