@@ -4,8 +4,8 @@ import prisma from "@/prisma/client";
 import { NextResponse } from "next/server";
 
 export const PATCH = auth(async function PATCH(req, ctx) {
-  // if (!req.auth)
-  //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!req.auth)
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const params = ctx.params as { id: string };
   const body = await req.json();
@@ -42,8 +42,8 @@ export const PATCH = auth(async function PATCH(req, ctx) {
 });
 
 export const DELETE = auth(async function DELETE(req, ctx) {
-  // if (!req.auth)
-  //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!req.auth)
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const params = ctx.params as { id: string };
 
