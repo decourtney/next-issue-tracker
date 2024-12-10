@@ -53,4 +53,5 @@ export async function generateMetadata({ params }: Props) {
     description: issue?.description,
   };
 }
+
 export default IssueDetailPage;
